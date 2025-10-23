@@ -1,0 +1,5 @@
+transformers
+torch
+rich
+pytest
+ipykernel
