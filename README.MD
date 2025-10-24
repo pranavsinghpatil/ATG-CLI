@@ -2,6 +2,11 @@
 
 This project is a fully functional local chatbot interface developed as part of the ATG Technical Assignment for a Machine Learning Intern position. The chatbot uses a Hugging Face text generation model to provide an interactive conversational experience in the command line.
 
+## Demo_video :
+demo_video file is there in repo's root dir.
+
+Watch it online ->[https://drive.google.com/file/d/16Jt43CCNp8kJhurXev2Z1897FDaoQ0YO/view?usp=sharing] 
+
 ## Task Overview
 
 The main objective of this project is to design and implement a command-line chatbot in Python that uses a Hugging Face-supported text generation model. The chatbot is required to maintain a short-term memory of previous exchanges using a sliding window mechanism to ensure coherent multi-turn conversation.
