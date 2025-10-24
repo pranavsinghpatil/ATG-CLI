@@ -1,19 +1,22 @@
-# src/model_loader.py
-from transformers import pipeline
 
-def load_model(model_name: str = "google/flan-t5-base"):
+from transformers import T5ForConditionalGeneration, T5Tokenizer
+
+def load_model(model_name: str = "google/flan-t5-large"):
     """
-    Load a text-to-text generation model.
+    T5 model and tokenizer.
     """
-    print(f"[INFO] Loading model '{model_name}'...")
-    text2text_generator = pipeline("text2text-generation", model=model_name)
-    print("[INFO] Model loaded successfully ✅")
+    model = T5ForConditionalGeneration.from_pretrained(model_name)
+    tokenizer = T5Tokenizer.from_pretrained(model_name)
     
     def chat_fn(prompt):
-        outputs = text2text_generator(
-            prompt,
+        input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+        outputs = model.generate(
+            input_ids,
             max_new_tokens=100,
+            min_length=20,
+            repetition_penalty=2.0,
+            no_repeat_ngram_size=2,
         )
-        return outputs[0]["generated_text"]
+        return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return chat_fn

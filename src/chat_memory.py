@@ -1,4 +1,3 @@
-# src/chat_memory.py
 from collections import deque
 
 class ChatMemory:
@@ -13,3 +12,7 @@ class ChatMemory:
     def get_context(self):
         """Return formatted context for next generation."""
         return "\n".join(self.memory)
+
+    def clear(self):
+        """Clear the conversation history."""
+        self.memory.clear()
